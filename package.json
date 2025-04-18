@@ -1,0 +1,23 @@
+{
+  "name": "g-photos-clone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1" , 
+    "generate" : "drizzle-kit generate:pg"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "drizzle-orm": "^0.42.0",
+    "pg": "^8.14.1",
+    "postgres": "^3.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "drizzle-kit": "^0.31.0"
+  }
+}
