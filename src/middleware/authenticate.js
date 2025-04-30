@@ -13,7 +13,9 @@ export function authenticate(req, res, next) {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
-    req.body.userId = decoded.sub
+
+    req.user = decoded.sub
+
     next()
   } catch (err) {
     console.error("JWT verification failed:", err)

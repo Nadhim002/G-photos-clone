@@ -10,7 +10,7 @@ export const usersTable = pgTable("users", {
 
 export const imagesTable = pgTable("images_table", {
   id: serial("id").primaryKey(),
-  image_name: text("image_name").notNull(),
+  image_path : text("image_path").notNull(),
   is_favorite: boolean("is_favorite").default(false),
   is_archived: boolean("is_archived").default(false),
   created_at: date("created_at").defaultNow(),
