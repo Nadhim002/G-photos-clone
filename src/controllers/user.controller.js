@@ -15,6 +15,7 @@ export async function signUpUser(req, res, next) {
     const { data, error } = await signUpUserModel(email, password)
 
     if (error) {
+      console.log(error)
       return res.status(404).json({ error: error.message })
     }
 
@@ -27,6 +28,7 @@ export async function signUpUser(req, res, next) {
 
 export async function signInUser(req, res, next) {
   try {
+
     const { email, password } = req.body
 
     if (!email || !password) {
@@ -35,7 +37,6 @@ export async function signInUser(req, res, next) {
 
     const { data, error } = await signInUserModel(email, password)
 
-    console.log(data, error)
 
     if (error) {
       return res.status(400).json({ error })
@@ -44,6 +45,8 @@ export async function signInUser(req, res, next) {
     res.status(200).json({ data })
 
   } catch (err) {
+
+    console.log(err)
     res.status(500).json({ error: 'Internal server error' })
   }
 }

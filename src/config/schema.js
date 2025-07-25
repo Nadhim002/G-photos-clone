@@ -1,4 +1,4 @@
-import { boolean, date, pgTable, serial, text, uuid } from "drizzle-orm/pg-core"
+import { boolean, date, pgTable, serial, text, uuid  , integer } from "drizzle-orm/pg-core"
 
 export const usersTable = pgTable("users", {
   id: uuid("id").primaryKey(),
@@ -16,7 +16,7 @@ export const imagesTable = pgTable("images_table", {
   created_at: date("created_at").defaultNow(),
   user_id: uuid("user_id")
     .notNull()
-    .references(() => usersTable.id),
+    .references(() => usersTable.id , { onDelete : "cascade" } ),
 })
 
 export const albumsTable = pgTable("albums_table", {
@@ -29,10 +29,10 @@ export const albumsTable = pgTable("albums_table", {
 
 export const albumsImageMapping = pgTable("albums_image_mapping", {
   id: serial("id").primaryKey(),
-  album_id: serial("album_id")
+  album_id: integer("album_id")
     .notNull()
-    .references(() => albumsTable.id),
-  image_id: serial("image_id")
+    .references(() => albumsTable.id  , { onDelete : "cascade" } ),
+  image_id: integer("image_id")
     .notNull()
-    .references(() => imagesTable.id),
+    .references(() => imagesTable.id ,   { onDelete : "cascade" } ),
 })

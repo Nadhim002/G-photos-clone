@@ -1,4 +1,3 @@
-import { error } from "console"
 import {
   insertImageData,
   insertImageInBucket,
@@ -81,7 +80,6 @@ export async function getImages(req, res, next) {
 
   getImagesModel(userId)
     .then((imagesData) => {
-      console.log(imagesData)
       res.json(imagesData)
     })
     .catch((error) => res.status(400).json(error))
